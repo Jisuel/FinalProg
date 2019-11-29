@@ -11,11 +11,18 @@ namespace FinalProg.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class Nomina
     {
+        [Display(Name = "ID")]
         public int Id_Nomina { get; set; }
+
+        [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
         public System.DateTime Fecha { get; set; }
+
+        [Display(Name = "Nómina")]
         public int Total { get; set; }
     }
 }

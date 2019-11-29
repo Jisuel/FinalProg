@@ -134,11 +134,13 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CalcularNominaController.cs" />
     <Compile Include="Controllers\CargosController.cs" />
     <Compile Include="Controllers\DepartamentosController.cs" />
     <Compile Include="Controllers\EmpleadosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MantenimientosController.cs" />
+    <Compile Include="Controllers\ProcesosController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -250,6 +252,12 @@
     <Content Include="Views\Cargos\Details.cshtml" />
     <Content Include="Views\Cargos\Edit.cshtml" />
     <Content Include="Views\Cargos\Index.cshtml" />
+    <Content Include="Views\Procesos\Index.cshtml" />
+    <Content Include="Views\CalcularNomina\Create.cshtml" />
+    <Content Include="Views\CalcularNomina\Delete.cshtml" />
+    <Content Include="Views\CalcularNomina\Details.cshtml" />
+    <Content Include="Views\CalcularNomina\Edit.cshtml" />
+    <Content Include="Views\CalcularNomina\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
