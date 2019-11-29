@@ -11,6 +11,7 @@ namespace FinalProg.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class Cargos
     {
@@ -19,8 +20,11 @@ namespace FinalProg.Models
         {
             this.Empleados = new HashSet<Empleados>();
         }
-    
+        
+        [Display(Name = "ID")]
         public int Id_Cargo { get; set; }
+
+        [Required(ErrorMessage = "Debe ingresar un nuevo Cargo.")]
         public string Cargo { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
