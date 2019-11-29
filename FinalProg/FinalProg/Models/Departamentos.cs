@@ -20,11 +20,16 @@ namespace FinalProg.Models
         {
             this.Empleados = new HashSet<Empleados>();
         }
-    
+
+        [Display(Name = "ID")]
         public int Id_Dep { get; set; }
 
         [Display(Name = "Departamento")]
+        [Required(ErrorMessage = "Debe ingresar un nuevo departamento.")]
         public string Nombre_Dep { get; set; }
+
+        [Display(Name = "Código")]
+        [Required(ErrorMessage = "El campo Código es obligatorio.")]
         public string Codigo_Dep { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

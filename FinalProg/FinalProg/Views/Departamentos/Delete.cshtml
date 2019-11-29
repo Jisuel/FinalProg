@@ -1,0 +1,48 @@
+﻿@model FinalProg.Models.Departamentos
+
+@{
+    ViewBag.Title = "Eliminar";
+}
+
+<h2>Eliminar</h2>
+
+<h3>Está seguro de que desea eliminar este registro?</h3>
+<div>
+    <h4>Departamentos</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Id_Dep)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Id_Dep)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre_Dep)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre_Dep)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Codigo_Dep)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Codigo_Dep)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar" class="btn btn-primary" /> |
+            @Html.ActionLink("Volver a la Lista", "Index")
+        </div>
+    }
+</div>
