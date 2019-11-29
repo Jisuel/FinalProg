@@ -11,6 +11,7 @@ namespace FinalProg.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class Empleados
     {
@@ -22,18 +23,44 @@ namespace FinalProg.Models
             this.Salidas = new HashSet<Salidas>();
             this.Vacaciones = new HashSet<Vacaciones>();
         }
-    
+        
+        [Display(Name = "ID")]
         public int Id_Emp { get; set; }
+
+        [Required(ErrorMessage = "El campo Nombre es obligatorio.")]
         public string Nombre { get; set; }
+
+        [Required(ErrorMessage = "El campo Apellido es obligatorio.")]
         public string Apellido { get; set; }
+
+        [Display(Name = "Código")]
+        [Required(ErrorMessage = "El campo Código es obligatorio.")]
         public string Codigo_Emp { get; set; }
+
+        [Display(Name = "Teléfono")]
+        [Required(ErrorMessage = "El campo Teléfono es obligatorio.")]
         public long Telefono { get; set; }
+
+        [Display(Name = "Departamento")]
+        [Required(ErrorMessage = "El campo Departamento es obligatorio.")]
         public int Departamento_Id { get; set; }
+
+        [Display(Name ="Cargo")]
+        [Required(ErrorMessage = "El campo Cargo es obligatorio.")]
         public int Cargo_Id { get; set; }
+
+        [Display(Name = "Fecha de Ingreso")]
+        [DataType(DataType.Date)]
+        [Required(ErrorMessage = "El campo es requerido.")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
         public System.DateTime Fecha_Ingreso { get; set; }
+
+        [Required(ErrorMessage ="El campo Salario es obligatorio.")]
         public int Salario { get; set; }
+
+        [Required(ErrorMessage = "El campo Estatus es obligatorio.")]
         public string Estatus { get; set; }
-    
+        
         public virtual Cargos Cargos { get; set; }
         public virtual Departamentos Departamentos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

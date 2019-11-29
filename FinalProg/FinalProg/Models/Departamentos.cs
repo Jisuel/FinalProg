@@ -11,6 +11,7 @@ namespace FinalProg.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class Departamentos
     {
@@ -21,6 +22,8 @@ namespace FinalProg.Models
         }
     
         public int Id_Dep { get; set; }
+
+        [Display(Name = "Departamento")]
         public string Nombre_Dep { get; set; }
         public string Codigo_Dep { get; set; }
     
