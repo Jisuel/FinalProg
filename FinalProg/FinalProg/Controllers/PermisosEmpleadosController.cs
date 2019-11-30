@@ -39,8 +39,8 @@ namespace FinalProg.Controllers
         // GET: PermisosEmpleados/Create
         public ActionResult Create()
         {
-            var NombreApellido = db.Empleados.AsEnumerable().Select(a => new { Id_Emp = a.Id_Emp, nombre = string.Format("{0} {1}", a.Nombre, a.Apellido) });
-            ViewBag.Empleado = new SelectList(NombreApellido, "Id_Emp", "Nombre");
+            var consulta = from x in db.Empleados.AsEnumerable() where x.Estatus == "Activo" select (new { Id_Emp = x.Id_Emp, nombre = string.Format("{0} {1}", x.Nombre, x.Apellido) });
+            ViewBag.Empleado = new SelectList(consulta, "Id_Emp", "Nombre");
             return View();
         }
 
@@ -51,7 +51,7 @@ namespace FinalProg.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id_Permisos,Empleado,Desde,Hasta,Comentarios")] Permisos permisos)
         {
-            var NombreApellido = db.Empleados.AsEnumerable().Select(a => new { Id_Emp = a.Id_Emp, nombre = string.Format("{0} {1}", a.Nombre, a.Apellido) });
+            var consulta = from x in db.Empleados.AsEnumerable() where x.Estatus == "Activo" select (new { Id_Emp = x.Id_Emp, nombre = string.Format("{0} {1}", x.Nombre, x.Apellido) });
 
             if (ModelState.IsValid)
             {
@@ -60,7 +60,7 @@ namespace FinalProg.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.Empleado = new SelectList(NombreApellido, "Id_Emp", "Nombre", permisos.Empleado);
+            ViewBag.Empleado = new SelectList(consulta, "Id_Emp", "Nombre", permisos.Empleado);
             return View(permisos);
         }
 

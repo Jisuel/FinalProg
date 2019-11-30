@@ -39,8 +39,8 @@ namespace FinalProg.Controllers
         // GET: VacacionesEmpleados/Create
         public ActionResult Create()
         {
-            var NombreApellido = db.Empleados.AsEnumerable().Select(a => new { Id_Emp = a.Id_Emp, nombre = string.Format("{0} {1}", a.Nombre, a.Apellido) });
-            ViewBag.Empleado = new SelectList(NombreApellido, "Id_Emp", "Nombre");
+            var consulta = from x in db.Empleados.AsEnumerable() where x.Estatus == "Activo" select (new { Id_Emp = x.Id_Emp, nombre = string.Format("{0} {1}", x.Nombre, x.Apellido) });
+            ViewBag.Empleado = new SelectList(consulta, "Id_Emp", "Nombre");
             return View();
         }
 
@@ -51,7 +51,7 @@ namespace FinalProg.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id_Vacaciones,Empleado,Desde,Hasta,Comentario")] Vacaciones vacaciones)
         {
-            var NombreApellido = db.Empleados.AsEnumerable().Select(a => new { Id_Emp = a.Id_Emp, nombre = string.Format("{0} {1}", a.Nombre, a.Apellido) });
+            var consulta = from x in db.Empleados.AsEnumerable() where x.Estatus == "Activo" select (new { Id_Emp = x.Id_Emp, nombre = string.Format("{0} {1}", x.Nombre, x.Apellido) });
 
             if (ModelState.IsValid)
             {
@@ -60,7 +60,7 @@ namespace FinalProg.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.Empleado = new SelectList(NombreApellido, "Id_Emp", "Nombre", vacaciones.Empleado);
+            ViewBag.Empleado = new SelectList(consulta, "Id_Emp", "Nombre", vacaciones.Empleado);
             return View(vacaciones);
         }
 
@@ -76,7 +76,7 @@ namespace FinalProg.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.Empleado = new SelectList(db.Empleados, "Id_Emp", "Nombre", vacaciones.Empleado);
+            ViewBag.Empleado = new SelectList(db.Vacaciones, "Id_Emp", "Nombre", vacaciones.Empleado);
             return View(vacaciones);
         }
 
@@ -87,13 +87,14 @@ namespace FinalProg.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id_Vacaciones,Empleado,Desde,Hasta,Comentario")] Vacaciones vacaciones)
         {
+
             if (ModelState.IsValid)
             {
                 db.Entry(vacaciones).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.Empleado = new SelectList(db.Empleados, "Id_Emp", "Nombre", vacaciones.Empleado);
+            ViewBag.Empleado = new SelectList(db.Vacaciones, "Id_Emp", "Nombre", vacaciones.Empleado);
             return View(vacaciones);
         }
 
