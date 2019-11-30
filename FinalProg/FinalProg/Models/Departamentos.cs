@@ -21,7 +21,7 @@ namespace FinalProg.Models
             this.Empleados = new HashSet<Empleados>();
         }
         
-        [Display(Name = "ID")]
+        [Display(Name = "ID Departamento")]
         public int Id_Dep { get; set; }
 
         [Display(Name = "Departamento")]

@@ -15,7 +15,7 @@ namespace FinalProg.Models
     
     public partial class Vacaciones
     {
-        [Display(Name = "ID")]
+        [Display(Name = "ID Vacaciones")]
         public int Id_Vacaciones { get; set; }
 
         [Required(ErrorMessage = "Debe seleccionar un Empleado.")]

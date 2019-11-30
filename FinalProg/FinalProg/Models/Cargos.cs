@@ -21,7 +21,7 @@ namespace FinalProg.Models
             this.Empleados = new HashSet<Empleados>();
         }
         
-        [Display(Name = "ID")]
+        [Display(Name = "ID Cargo")]
         public int Id_Cargo { get; set; }
 
         [Required(ErrorMessage = "Debe ingresar un nuevo Cargo.")]

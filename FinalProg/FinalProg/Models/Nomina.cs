@@ -15,7 +15,7 @@ namespace FinalProg.Models
     
     public partial class Nomina
     {
-        [Display(Name = "ID")]
+        [Display(Name = "ID Nómina")]
         public int Id_Nomina { get; set; }
 
         [Required(ErrorMessage = "Debe seleccionar una Fecha.")]

@@ -15,7 +15,7 @@ namespace FinalProg.Models
     
     public partial class Salidas
     {
-        [Display(Name = "ID")]
+        [Display(Name = "ID Salida")]
         public int Id_Salida { get; set; }
 
         [Required(ErrorMessage = "Debe seleccionar un Empleado.")]

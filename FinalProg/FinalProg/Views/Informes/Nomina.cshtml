@@ -1,0 +1,49 @@
+﻿@model IEnumerable<FinalProg.Models.Nomina>
+
+@{
+    ViewBag.Title = "Lista";
+}
+
+<h2>Lista</h2>
+
+<form method="post" style="float:right">
+    <p>
+        <input type="number" name="buscar" placeholder=" Año | Mes" class="form-control-static" min="1" required="required"/>
+        <input type="submit" value="Buscar" class="btn btn-primary">
+    </p>
+</form>
+<p>
+    @Html.ActionLink("Ver Todas", "Nomina")
+</p>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Id_Nomina)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fecha)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Total)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id_Nomina)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fecha)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Total)
+            </td>
+        </tr>
+    }
+
+</table>
+

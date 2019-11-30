@@ -15,7 +15,7 @@ namespace FinalProg.Models
     
     public partial class Permisos
     {
-        [Display(Name = "ID")]
+        [Display(Name = "ID Permiso")]
         public int Id_Permisos { get; set; }
 
         [Required(ErrorMessage = "Debe seleccionar un Empleado.")]

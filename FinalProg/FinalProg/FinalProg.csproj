@@ -139,6 +139,7 @@
     <Compile Include="Controllers\DepartamentosController.cs" />
     <Compile Include="Controllers\EmpleadosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InformesController.cs" />
     <Compile Include="Controllers\LicenciasEmpleadosController.cs" />
     <Compile Include="Controllers\MantenimientosController.cs" />
     <Compile Include="Controllers\PermisosEmpleadosController.cs" />
@@ -282,6 +283,15 @@
     <Content Include="Views\LicenciasEmpleados\Details.cshtml" />
     <Content Include="Views\LicenciasEmpleados\Edit.cshtml" />
     <Content Include="Views\LicenciasEmpleados\Index.cshtml" />
+    <Content Include="Views\Informes\Index.cshtml" />
+    <Content Include="Views\Informes\Activos.cshtml" />
+    <Content Include="Views\Informes\Inactivos.cshtml" />
+    <Content Include="Views\Informes\Departamentos.cshtml" />
+    <Content Include="Views\Informes\Cargos.cshtml" />
+    <Content Include="Views\Informes\Nomina.cshtml" />
+    <Content Include="Views\Informes\Entradas.cshtml" />
+    <Content Include="Views\Informes\Salidas.cshtml" />
+    <Content Include="Views\Informes\Permisos.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

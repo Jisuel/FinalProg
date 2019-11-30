@@ -1,0 +1,61 @@
+﻿@model IEnumerable<FinalProg.Models.Salidas>
+
+@{
+    ViewBag.Title = "Lista";
+}
+
+<h2>Lista</h2>
+
+<form method="post" style="float:right">
+    <p>
+        <input type="number" name="buscar" placeholder=" Mes" class="form-control-static" min="1" required="required" />
+        <input type="submit" value="Buscar" class="btn btn-primary">
+    </p>
+</form>
+<p>
+    @Html.ActionLink("Ver Todos", "Salidas")
+</p>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Id_Salida)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tipo_Salida)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Motivo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fecha_Salida)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Empleados.Nombre)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id_Salida)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tipo_Salida)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Motivo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fecha_Salida)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Empleados.Nombre)
+            </td>
+        </tr>
+    }
+
+</table>
+

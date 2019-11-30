@@ -1,0 +1,94 @@
+﻿@model IEnumerable<FinalProg.Models.Empleados>
+
+@{
+    ViewBag.Title = "Activos";
+}
+<h2>Empleados Activos</h2><br />
+<form method="post" style="float:right">
+    <p>
+        <input type="text" name="buscar" placeholder=" Empleado | Id Depart." class="form-control-static" />
+        <input type="submit" value="Buscar" class="btn btn-primary">
+    </p>
+</form>
+<p>
+    @Html.ActionLink("Ver Todos", "Activos")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Id_Emp)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Apellido)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Codigo_Emp)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Telefono)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fecha_Ingreso)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Salario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cargos.Cargo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Departamentos.Nombre_Dep)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Departamentos.Id_Dep)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Estatus)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id_Emp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Apellido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Codigo_Emp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Telefono)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fecha_Ingreso)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Salario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cargos.Cargo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Departamentos.Nombre_Dep)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Departamentos.Id_Dep)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Estatus)
+            </td>
+        </tr>
+    }
+
+</table>
+

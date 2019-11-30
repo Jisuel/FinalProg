@@ -1,0 +1,39 @@
+﻿@model IEnumerable<FinalProg.Models.Departamentos>
+
+@{
+    ViewBag.Title = "Departamentos";
+}
+
+<h2>Departamentos</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Id_Dep)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre_Dep)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Codigo_Dep)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id_Dep)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre_Dep)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Codigo_Dep)
+            </td>
+        </tr>
+    }
+
+</table>
+
