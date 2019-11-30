@@ -18,13 +18,13 @@ namespace FinalProg.Models
         [Display(Name = "ID")]
         public int Id_Nomina { get; set; }
 
+        [Required(ErrorMessage = "Debe seleccionar una Fecha.")]
         [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
-        [Required(ErrorMessage = "Debe ingresar una fecha para la Nomina.")]
         public System.DateTime Fecha { get; set; }
 
         [Display(Name = "Nómina")]
-        [Required(ErrorMessage = "El total de la Nomina debe tener un valor válido.")]
+        [Required(ErrorMessage = "Debe especificar un valor para la Nómina.")]
         public int Total { get; set; }
     }
 }

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="RecursosHumanosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="RecursosHumanosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Cargos">
           <Key>
             <PropertyRef Name="Id_Cargo" />
@@ -82,6 +82,7 @@
           <Property Name="Empleado" Type="int" Nullable="false" />
           <Property Name="Desde" Type="smalldatetime" Nullable="false" />
           <Property Name="Hasta" Type="smalldatetime" Nullable="false" />
+          <Property Name="Comentario" Type="varchar" MaxLength="200" />
         </EntityType>
         <Association Name="Fk_Departamento_Id">
           <End Role="Departamentos" Type="Self.Departamentos" Multiplicity="1" />
@@ -189,8 +190,7 @@
             <End Role="Vacaciones" EntitySet="Vacaciones" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="RecursosHumanosModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -230,7 +230,7 @@
           <NavigationProperty Name="Licencias" Relationship="Self.Fk_Licencias_Empleado" FromRole="Empleados" ToRole="Licencias" />
           <NavigationProperty Name="Permisos" Relationship="Self.Fk_Permisos_Empleado" FromRole="Empleados" ToRole="Permisos" />
           <NavigationProperty Name="Salidas" Relationship="Self.Fk_Salida_Empleado" FromRole="Empleados" ToRole="Salidas" />
-          <NavigationProperty Name="Vacaciones" Relationship="Self.Fk_Vacaciones_Empleado" FromRole="Empleados" ToRole="Vacaciones" />
+          <NavigationProperty Name="Vacaciones" Relationship="RecursosHumanosModel.Fk_Vacaciones_Empleado" FromRole="Empleados" ToRole="Vacaciones" />
         </EntityType>
         <EntityType Name="Licencias">
           <Key>
@@ -273,16 +273,6 @@
           <Property Name="Motivo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="Fecha_Salida" Type="DateTime" Nullable="false" Precision="0" />
           <NavigationProperty Name="Empleados" Relationship="Self.Fk_Salida_Empleado" FromRole="Salidas" ToRole="Empleados" />
-        </EntityType>
-        <EntityType Name="Vacaciones">
-          <Key>
-            <PropertyRef Name="Id_Vacaciones" />
-          </Key>
-          <Property Name="Id_Vacaciones" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Empleado" Type="Int32" Nullable="false" />
-          <Property Name="Desde" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="Hasta" Type="DateTime" Nullable="false" Precision="0" />
-          <NavigationProperty Name="Empleados" Relationship="Self.Fk_Vacaciones_Empleado" FromRole="Vacaciones" ToRole="Empleados" />
         </EntityType>
         <Association Name="Fk_Id_Cargo">
           <End Role="Cargos" Type="Self.Cargos" Multiplicity="1" />
@@ -344,18 +334,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="Fk_Vacaciones_Empleado">
-          <End Role="Empleados" Type="Self.Empleados" Multiplicity="1" />
-          <End Role="Vacaciones" Type="Self.Vacaciones" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Empleados">
-              <PropertyRef Name="Id_Emp" />
-            </Principal>
-            <Dependent Role="Vacaciones">
-              <PropertyRef Name="Empleado" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="RecursosHumanosEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Cargos" EntityType="Self.Cargos" />
           <EntitySet Name="Departamentos" EntityType="Self.Departamentos" />
@@ -364,7 +342,6 @@
           <EntitySet Name="Nomina" EntityType="Self.Nomina" />
           <EntitySet Name="Permisos" EntityType="Self.Permisos" />
           <EntitySet Name="Salidas" EntityType="Self.Salidas" />
-          <EntitySet Name="Vacaciones" EntityType="Self.Vacaciones" />
           <AssociationSet Name="Fk_Id_Cargo" Association="Self.Fk_Id_Cargo">
             <End Role="Cargos" EntitySet="Cargos" />
             <End Role="Empleados" EntitySet="Empleados" />
@@ -385,11 +362,35 @@
             <End Role="Empleados" EntitySet="Empleados" />
             <End Role="Salidas" EntitySet="Salidas" />
           </AssociationSet>
-          <AssociationSet Name="Fk_Vacaciones_Empleado" Association="Self.Fk_Vacaciones_Empleado">
+          <EntitySet Name="Vacaciones" EntityType="RecursosHumanosModel.Vacaciones" />
+          <AssociationSet Name="Fk_Vacaciones_Empleado" Association="RecursosHumanosModel.Fk_Vacaciones_Empleado">
             <End Role="Empleados" EntitySet="Empleados" />
             <End Role="Vacaciones" EntitySet="Vacaciones" />
           </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Vacaciones">
+          <Key>
+            <PropertyRef Name="Id_Vacaciones" />
+          </Key>
+          <Property Name="Id_Vacaciones" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Empleado" Type="Int32" Nullable="false" />
+          <Property Name="Desde" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Hasta" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Comentario" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Empleados" Relationship="RecursosHumanosModel.Fk_Vacaciones_Empleado" FromRole="Vacaciones" ToRole="Empleados" />
+        </EntityType>
+        <Association Name="Fk_Vacaciones_Empleado">
+          <End Type="RecursosHumanosModel.Empleados" Role="Empleados" Multiplicity="1" />
+          <End Type="RecursosHumanosModel.Vacaciones" Role="Vacaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleados">
+              <PropertyRef Name="Id_Emp" />
+            </Principal>
+            <Dependent Role="Vacaciones">
+              <PropertyRef Name="Empleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -475,10 +476,11 @@
           <EntitySetMapping Name="Vacaciones">
             <EntityTypeMapping TypeName="RecursosHumanosModel.Vacaciones">
               <MappingFragment StoreEntitySet="Vacaciones">
-                <ScalarProperty Name="Id_Vacaciones" ColumnName="Id_Vacaciones" />
-                <ScalarProperty Name="Empleado" ColumnName="Empleado" />
-                <ScalarProperty Name="Desde" ColumnName="Desde" />
+                <ScalarProperty Name="Comentario" ColumnName="Comentario" />
                 <ScalarProperty Name="Hasta" ColumnName="Hasta" />
+                <ScalarProperty Name="Desde" ColumnName="Desde" />
+                <ScalarProperty Name="Empleado" ColumnName="Empleado" />
+                <ScalarProperty Name="Id_Vacaciones" ColumnName="Id_Vacaciones" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -11,13 +11,26 @@ namespace FinalProg.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class Permisos
     {
+        [Display(Name = "ID")]
         public int Id_Permisos { get; set; }
+
+        [Required(ErrorMessage = "Debe seleccionar un Empleado.")]
         public int Empleado { get; set; }
+
+        [DataType(DataType.Date)]
+        [Required(ErrorMessage = "Debe seleccionar una Fecha.")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
         public System.DateTime Desde { get; set; }
+
+        [DataType(DataType.Date)]
+        [Required(ErrorMessage = "Debe seleccionar una Fecha.")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
         public System.DateTime Hasta { get; set; }
+
         public string Comentarios { get; set; }
     
         public virtual Empleados Empleados { get; set; }

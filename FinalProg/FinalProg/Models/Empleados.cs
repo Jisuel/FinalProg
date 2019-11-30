@@ -27,40 +27,40 @@ namespace FinalProg.Models
         [Display(Name = "ID")]
         public int Id_Emp { get; set; }
 
-        [Required(ErrorMessage = "El campo Nombre es obligatorio.")]
+        [Required(ErrorMessage = "Este campo es obligatorio.")]
         public string Nombre { get; set; }
 
-        [Required(ErrorMessage = "El campo Apellido es obligatorio.")]
+        [Required(ErrorMessage = "Este campo es obligatorio.")]
         public string Apellido { get; set; }
 
         [Display(Name = "Código")]
-        [Required(ErrorMessage = "El campo Código es obligatorio.")]
+        [Required(ErrorMessage = "Este campo es obligatorio.")]
         public string Codigo_Emp { get; set; }
 
         [Display(Name = "Teléfono")]
-        [Required(ErrorMessage = "El campo Teléfono es obligatorio.")]
+        [Required(ErrorMessage = "Este campo es obligatorio.")]
         public long Telefono { get; set; }
 
         [Display(Name = "Departamento")]
-        [Required(ErrorMessage = "El campo Departamento es obligatorio.")]
+        [Required(ErrorMessage = "Debe seleccionar un Departamento.")]
         public int Departamento_Id { get; set; }
 
-        [Display(Name ="Cargo")]
-        [Required(ErrorMessage = "El campo Cargo es obligatorio.")]
+        [Display(Name = "Cargo")]
+        [Required(ErrorMessage = "Debe seleccionar un Cargo.")]
         public int Cargo_Id { get; set; }
 
-        [Display(Name = "Fecha de Ingreso")]
+        [Display(Name = "Fecha Ingreso")]
         [DataType(DataType.Date)]
-        [Required(ErrorMessage = "El campo es requerido.")]
+        [Required(ErrorMessage = "Debe seleccionar una Fecha.")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
         public System.DateTime Fecha_Ingreso { get; set; }
 
-        [Required(ErrorMessage ="El campo Salario es obligatorio.")]
+        [Required(ErrorMessage = "Este campo es obligatorio.")]
         public int Salario { get; set; }
 
-        [Required(ErrorMessage = "El campo Estatus es obligatorio.")]
+        [Required(ErrorMessage = "Debe seleccionar una opción.")]
         public string Estatus { get; set; }
-        
+    
         public virtual Cargos Cargos { get; set; }
         public virtual Departamentos Departamentos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -22,14 +22,16 @@ namespace FinalProg.Models
         public int Empleado { get; set; }
 
         [Display(Name = "Tipo Salida")]
-        [Required(ErrorMessage = "Debe seleccionar un tipo de Salida.")]
+        [Required(ErrorMessage = "Debe seleccionar una de las opciones.")]
         public string Tipo_Salida { get; set; }
+
+        [Required(ErrorMessage = "Debe especificar un Motivo.")]
         public string Motivo { get; set; }
 
         [Display(Name = "Fecha Salida")]
         [DataType(DataType.Date)]
+        [Required(ErrorMessage = "Debe seleccionar una Fecha.")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
-        [Required(ErrorMessage = "Debe elegir una fecha de Salida.")]
         public System.DateTime Fecha_Salida { get; set; }
     
         public virtual Empleados Empleados { get; set; }

@@ -10,33 +10,33 @@ using FinalProg.Models;
 
 namespace FinalProg.Controllers
 {
-    public class SalidaEmpleadosController : Controller
+    public class VacacionesEmpleadosController : Controller
     {
         private RecursosHumanosEntities db = new RecursosHumanosEntities();
 
-        // GET: SalidaEmpleados
+        // GET: VacacionesEmpleados
         public ActionResult Index()
         {
-            var salidas = db.Salidas.Include(s => s.Empleados);
-            return View(salidas.ToList());
+            var vacaciones = db.Vacaciones.Include(v => v.Empleados);
+            return View(vacaciones.ToList());
         }
 
-        // GET: SalidaEmpleados/Details/5
+        // GET: VacacionesEmpleados/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Salidas salidas = db.Salidas.Find(id);
-            if (salidas == null)
+            Vacaciones vacaciones = db.Vacaciones.Find(id);
+            if (vacaciones == null)
             {
                 return HttpNotFound();
             }
-            return View(salidas);
+            return View(vacaciones);
         }
 
-        // GET: SalidaEmpleados/Create
+        // GET: VacacionesEmpleados/Create
         public ActionResult Create()
         {
             var NombreApellido = db.Empleados.AsEnumerable().Select(a => new { Id_Emp = a.Id_Emp, nombre = string.Format("{0} {1}", a.Nombre, a.Apellido) });
@@ -44,94 +44,81 @@ namespace FinalProg.Controllers
             return View();
         }
 
-        // POST: SalidaEmpleados/Create
+        // POST: VacacionesEmpleados/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id_Salida,Empleado,Tipo_Salida,Motivo,Fecha_Salida")] Salidas salidas)
+        public ActionResult Create([Bind(Include = "Id_Vacaciones,Empleado,Desde,Hasta,Comentario")] Vacaciones vacaciones)
         {
             var NombreApellido = db.Empleados.AsEnumerable().Select(a => new { Id_Emp = a.Id_Emp, nombre = string.Format("{0} {1}", a.Nombre, a.Apellido) });
 
             if (ModelState.IsValid)
             {
-                db.Salidas.Add(salidas);
+                db.Vacaciones.Add(vacaciones);
                 db.SaveChanges();
-
-                var query = (from a in db.Empleados
-                             join b in db.Salidas on a.Id_Emp equals b.Empleado
-                             where a.Id_Emp == b.Empleado
-                             select a).ToList();
-
-                foreach (var item in query)
-                {
-                    item.Estatus = "Inactivo";
-                }
-
-                db.SaveChanges();
-
                 return RedirectToAction("Index");
             }
 
-            ViewBag.Empleado = new SelectList(NombreApellido, "Id_Emp", "Nombre", salidas.Empleado);
-            return View(salidas);
+            ViewBag.Empleado = new SelectList(NombreApellido, "Id_Emp", "Nombre", vacaciones.Empleado);
+            return View(vacaciones);
         }
 
-        // GET: SalidaEmpleados/Edit/5
+        // GET: VacacionesEmpleados/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Salidas salidas = db.Salidas.Find(id);
-            if (salidas == null)
+            Vacaciones vacaciones = db.Vacaciones.Find(id);
+            if (vacaciones == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.Empleado = new SelectList(db.Empleados, "Id_Emp", "Nombre", salidas.Empleado);
-            return View(salidas);
+            ViewBag.Empleado = new SelectList(db.Empleados, "Id_Emp", "Nombre", vacaciones.Empleado);
+            return View(vacaciones);
         }
 
-        // POST: SalidaEmpleados/Edit/5
+        // POST: VacacionesEmpleados/Edit/5
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id_Salida,Empleado,Tipo_Salida,Motivo,Fecha_Salida")] Salidas salidas)
+        public ActionResult Edit([Bind(Include = "Id_Vacaciones,Empleado,Desde,Hasta,Comentario")] Vacaciones vacaciones)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(salidas).State = EntityState.Modified;
+                db.Entry(vacaciones).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.Empleado = new SelectList(db.Empleados, "Id_Emp", "Nombre", salidas.Empleado);
-            return View(salidas);
+            ViewBag.Empleado = new SelectList(db.Empleados, "Id_Emp", "Nombre", vacaciones.Empleado);
+            return View(vacaciones);
         }
 
-        // GET: SalidaEmpleados/Delete/5
+        // GET: VacacionesEmpleados/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Salidas salidas = db.Salidas.Find(id);
-            if (salidas == null)
+            Vacaciones vacaciones = db.Vacaciones.Find(id);
+            if (vacaciones == null)
             {
                 return HttpNotFound();
             }
-            return View(salidas);
+            return View(vacaciones);
         }
 
-        // POST: SalidaEmpleados/Delete/5
+        // POST: VacacionesEmpleados/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Salidas salidas = db.Salidas.Find(id);
-            db.Salidas.Remove(salidas);
+            Vacaciones vacaciones = db.Vacaciones.Find(id);
+            db.Vacaciones.Remove(vacaciones);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
