@@ -20,9 +20,11 @@ namespace FinalProg.Models
 
         [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
+        [Required(ErrorMessage = "Debe ingresar una fecha para la Nomina.")]
         public System.DateTime Fecha { get; set; }
 
         [Display(Name = "Nómina")]
+        [Required(ErrorMessage = "El total de la Nomina debe tener un valor válido.")]
         public int Total { get; set; }
     }
 }

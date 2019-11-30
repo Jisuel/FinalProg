@@ -11,13 +11,25 @@ namespace FinalProg.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class Salidas
     {
+        [Display(Name = "ID")]
         public int Id_Salida { get; set; }
+
+        [Required(ErrorMessage = "Debe seleccionar un Empleado.")]
         public int Empleado { get; set; }
+
+        [Display(Name = "Tipo Salida")]
+        [Required(ErrorMessage = "Debe seleccionar un tipo de Salida.")]
         public string Tipo_Salida { get; set; }
         public string Motivo { get; set; }
+
+        [Display(Name = "Fecha Salida")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
+        [Required(ErrorMessage = "Debe elegir una fecha de Salida.")]
         public System.DateTime Fecha_Salida { get; set; }
     
         public virtual Empleados Empleados { get; set; }
