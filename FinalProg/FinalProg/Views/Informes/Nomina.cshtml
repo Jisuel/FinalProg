@@ -3,15 +3,16 @@
 @{
     ViewBag.Title = "Lista";
 }
-
+<link rel="stylesheet" type="text/css" href="~/Content/Style.css" />
 <h2>Lista</h2>
 
 <form method="post" style="float:right">
     <p>
-        <input type="number" name="buscar" placeholder=" Año | Mes" class="form-control-static" min="1" required="required"/>
+        <input type="number" name="buscar" placeholder=" Año | Mes" class="form-control-static" min="1" required="required" style="border-radius:5px"/>
         <input type="submit" value="Buscar" class="btn btn-primary">
     </p>
 </form>
+<br />
 <p>
     @Html.ActionLink("Ver Todas", "Nomina")
 </p>

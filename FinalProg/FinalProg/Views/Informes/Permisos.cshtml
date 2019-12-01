@@ -3,13 +3,14 @@
 @{
     ViewBag.Title = "Lista";
 }
-
-<h2>Lista</h2>
+<link rel="stylesheet" type="text/css" href="~/Content/Style.css" />
+<h2>Permisos</h2>
 
 <form method="post" style="float:right">
-    <input type="text" name="buscar" placeholder=" Empleado | Id Depart." class="form-control-static" />
-    <input type="submit" value="Buscar" class="btn btn-primary"><br /><br />
+    <input type="text" name="buscar" placeholder=" Empleado | Id Depart." class="form-control-static" style="border-radius:5px"/>
+    <input type="submit" value="Buscar" class="btn btn-primary">
 </form>
+<br />
 <p>
     @Html.ActionLink("Ver Todos", "Permisos")
 </p>

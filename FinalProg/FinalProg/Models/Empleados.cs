@@ -24,7 +24,7 @@ namespace FinalProg.Models
             this.Vacaciones = new HashSet<Vacaciones>();
         }
         
-        [Display(Name = "ID Empleado")]
+        [Display(Name = "ID Emp.")]
         public int Id_Emp { get; set; }
 
         [Required(ErrorMessage = "Este campo es obligatorio.")]

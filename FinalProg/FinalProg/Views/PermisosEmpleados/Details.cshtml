@@ -3,7 +3,7 @@
 @{
     ViewBag.Title = "Detalles";
 }
-
+<link rel="stylesheet" type="text/css" href="~/Content/Style.css" />
 <h2>Detalles</h2>
 
 <div>
@@ -53,6 +53,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Editar", "Edit", new { id = Model.Id_Permisos }) |
+    @Html.ActionLink("Editar", "Edit", new { id = Model.Id_Permisos }, new { @Class = "btn btn-warning"}) |
     @Html.ActionLink("Volver a la Lista", "Index")
 </p>

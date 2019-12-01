@@ -3,7 +3,7 @@
 @{
     ViewBag.Title = "Lista";
 }
-
+<link rel="stylesheet" type="text/css" href="~/Content/Style.css" />
 <h2>Lista</h2>
 
 <p>
@@ -35,9 +35,9 @@
             @Html.DisplayFor(modelItem => item.Codigo_Dep)
         </td>
         <td>
-            @Html.ActionLink("Editar", "Edit", new { id = item.Id_Dep }) |
-            @Html.ActionLink("Detalles", "Details", new { id = item.Id_Dep }) |
-            @Html.ActionLink("Eliminar", "Delete", new { id = item.Id_Dep })
+            @Html.ActionLink("Editar", "Edit", new { id = item.Id_Dep }, new { @Class = "btn btn-warning"}) |
+            @Html.ActionLink("Detalles", "Details", new { id = item.Id_Dep }, new { @Class = "btn btn-primary" }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id = item.Id_Dep }, new { @Class = "btn btn-danger" })
         </td>
     </tr>
 }

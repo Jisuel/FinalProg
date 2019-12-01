@@ -3,7 +3,7 @@
 @{
     ViewBag.Title = "Eliminar";
 }
-
+<link rel="stylesheet" type="text/css" href="~/Content/Style.css" />
 <h2>Eliminar</h2>
 
 <h3>Está seguro de que desea eliminar este registro?</h3>
@@ -97,7 +97,7 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Eliminar" class="btn btn-primary" /> |
+            <input type="submit" value="Eliminar" class="btn btn-danger" /> |
             @Html.ActionLink("Volver a la lista", "Index")
         </div>
     }

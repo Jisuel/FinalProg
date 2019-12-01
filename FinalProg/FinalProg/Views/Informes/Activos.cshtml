@@ -3,13 +3,15 @@
 @{
     ViewBag.Title = "Activos";
 }
-<h2>Empleados Activos</h2><br />
+<link rel="stylesheet" type="text/css" href="~/Content/Style.css" />
+<h2>Empleados Activos</h2>
 <form method="post" style="float:right">
     <p>
-        <input type="text" name="buscar" placeholder=" Empleado | Id Depart." class="form-control-static" />
+        <input type="text" name="buscar" placeholder=" Empleado | Id Depart." class="form-control-static" style="border-radius:5px"/>
         <input type="submit" value="Buscar" class="btn btn-primary">
     </p>
 </form>
+<br />
 <p>
     @Html.ActionLink("Ver Todos", "Activos")
 </p>
