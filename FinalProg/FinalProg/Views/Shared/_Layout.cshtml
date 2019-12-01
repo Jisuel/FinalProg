@@ -9,22 +9,29 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container" align="center">
+        <div>
+            <img src="/img/logo.png" width="450" height="120"/>
+        </div>
+    </div>
+    <div class="navbar navbar-inverse" style="margin-top:30px; background-color:white; border:none">
         <div class="container">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" style="background-color:darkturquoise">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Mantenimiento", "Index", "Mantenimientos")</li>
-                    <li>@Html.ActionLink("Procesos", "Index", "Procesos")</li>
-                    <li>@Html.ActionLink("Informes", "Index", "Informes")</li>
-                </ul>
+                <nav align="center">
+                    <ul class="menu" align="center">
+                        <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
+                        <li>@Html.ActionLink("Mantenimiento", "Index", "Mantenimientos")</li>
+                        <li>@Html.ActionLink("Procesos", "Index", "Procesos")</li>
+                        <li>@Html.ActionLink("Informes", "Index", "Informes")</li>
+                    </ul>
+                </nav>
             </div>
         </div>
     </div>
@@ -32,7 +39,11 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - Jesuel Ferreiras | 2017-5319</p>
+            <div class="footer">
+                <div class="mensaje">
+                    <p>&copy; @DateTime.Now.Year - Derechos Reservados / 2017-5319</p>
+                </div>
+            </div>
         </footer>
     </div>
 
