@@ -24,7 +24,7 @@ namespace FinalProg.Models
             this.Vacaciones = new HashSet<Vacaciones>();
         }
         
-        [Display(Name = "ID Emp.")]
+        [Display(Name = "ID")]
         public int Id_Emp { get; set; }
 
         [Required(ErrorMessage = "Este campo es obligatorio.")]
@@ -35,10 +35,13 @@ namespace FinalProg.Models
 
         [Display(Name = "Código")]
         [Required(ErrorMessage = "Este campo es obligatorio.")]
+        [MinLength(4)]
+        [MaxLength(4)]
         public string Codigo_Emp { get; set; }
 
         [Display(Name = "Teléfono")]
         [Required(ErrorMessage = "Este campo es obligatorio.")]
+        [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Número de Teléfono no válido.")]
         public long Telefono { get; set; }
 
         [Display(Name = "Departamento")]
@@ -56,6 +59,7 @@ namespace FinalProg.Models
         public System.DateTime Fecha_Ingreso { get; set; }
 
         [Required(ErrorMessage = "Este campo es obligatorio.")]
+        [Range(0, 1000000)]
         public int Salario { get; set; }
 
         [Required(ErrorMessage = "Debe seleccionar una opción.")]

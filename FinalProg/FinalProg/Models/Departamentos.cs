@@ -30,6 +30,8 @@ namespace FinalProg.Models
 
         [Display(Name = "Código")]
         [Required(ErrorMessage = "Debe ingresar un código para el Departamento.")]
+        [MinLength(4)]
+        [MaxLength(4)]
         public string Codigo_Dep { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

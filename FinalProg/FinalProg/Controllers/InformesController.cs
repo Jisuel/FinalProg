@@ -161,7 +161,7 @@ namespace FinalProg.Controllers
             }
             else
             {
-                lista = lista.Where(a => a.Empleados.Nombre.Contains(buscar));
+                lista = lista.Where(a => a.Empleados.Nombre.Contains(buscar) || a.Empleados.Codigo_Emp.Equals(buscar));
                 return View(lista);
             }
         }

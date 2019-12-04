@@ -7,7 +7,7 @@
 <h2>Permisos</h2>
 
 <form method="post" style="float:right">
-    <input type="text" name="buscar" placeholder=" Empleado | Id Depart." class="form-control-static" style="border-radius:5px"/>
+    <input type="text" name="buscar" placeholder=" Empleado | Código Emp." class="form-control-static" style="border-radius:5px"/>
     <input type="submit" value="Buscar" class="btn btn-primary">
 </form>
 <br />
@@ -31,28 +31,34 @@
         <th>
             @Html.DisplayNameFor(model => model.Empleados.Nombre)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Empleados.Codigo_Emp)
+        </th>
         <th></th>
     </tr>
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Id_Permisos)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Desde)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Hasta)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Comentarios)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Empleados.Nombre)
-            </td>
-        </tr>
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Id_Permisos)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Desde)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Hasta)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Comentarios)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Empleados.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Empleados.Codigo_Emp)
+        </td>
+    </tr>
     }
 
 </table>

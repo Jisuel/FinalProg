@@ -67,7 +67,7 @@ namespace FinalProg.Controllers
         // GET: VacacionesEmpleados/Edit/5
         public ActionResult Edit(int? id)
         {
-            var consulta = from x in db.Empleados.AsEnumerable() where x.Estatus == "Activo" select (new { Id_Emp = x.Id_Emp, nombre = string.Format("{0} {1}", x.Nombre, x.Apellido) });
+            var consulta = from x in db.Empleados.AsEnumerable() select (new { Id_Emp = x.Id_Emp, nombre = string.Format("{0} {1}", x.Nombre, x.Apellido) });
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -88,7 +88,7 @@ namespace FinalProg.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id_Vacaciones,Empleado,Desde,Hasta,Comentario")] Vacaciones vacaciones)
         {
-            var consulta = from x in db.Empleados.AsEnumerable() where x.Estatus == "Activo" select (new { Id_Emp = x.Id_Emp, nombre = string.Format("{0} {1}", x.Nombre, x.Apellido) });
+            var consulta = from x in db.Empleados.AsEnumerable() select (new { Id_Emp = x.Id_Emp, nombre = string.Format("{0} {1}", x.Nombre, x.Apellido) });
             if (ModelState.IsValid)
             {
                 db.Entry(vacaciones).State = EntityState.Modified;

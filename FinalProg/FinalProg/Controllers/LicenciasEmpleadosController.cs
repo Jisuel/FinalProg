@@ -68,6 +68,7 @@ namespace FinalProg.Controllers
         // GET: LicenciasEmpleados/Edit/5
         public ActionResult Edit(int? id)
         {
+            var consulta = from x in db.Empleados.AsEnumerable() select (new { Id_Emp = x.Id_Emp, nombre = string.Format("{0} {1}", x.Nombre, x.Apellido) });
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -77,7 +78,7 @@ namespace FinalProg.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.Empleado = new SelectList(db.Empleados, "Id_Emp", "Nombre", licencias.Empleado);
+            ViewBag.Empleado = new SelectList(consulta, "Id_Emp", "Nombre", licencias.Empleado);
             return View(licencias);
         }
 
@@ -88,13 +89,14 @@ namespace FinalProg.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id_Licencias,Empleado,Desde,Hasta,Motivo,Comentarios")] Licencias licencias)
         {
+            var consulta = from x in db.Empleados.AsEnumerable() select (new { Id_Emp = x.Id_Emp, nombre = string.Format("{0} {1}", x.Nombre, x.Apellido) });
             if (ModelState.IsValid)
             {
                 db.Entry(licencias).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.Empleado = new SelectList(db.Empleados, "Id_Emp", "Nombre", licencias.Empleado);
+            ViewBag.Empleado = new SelectList(consulta, "Id_Emp", "Nombre", licencias.Empleado);
             return View(licencias);
         }
 
